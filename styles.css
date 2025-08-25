@@ -88,18 +88,20 @@ body {
 h1 {
     text-align: center;
     margin-bottom: 30px;
-    font-size: 2.5em;
+    font-size: 3em;
+    font-weight: 700;
     background: linear-gradient(45deg, #667eea, #764ba2, #667eea);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 0 0 30px rgba(102, 126, 234, 0.5);
+    letter-spacing: 2px;
 }
 
 .setup-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     flex-wrap: wrap;
     gap: 15px;
 }
@@ -107,6 +109,7 @@ h1 {
 h2 {
     font-size: 1.8em;
     color: #a8b2ff;
+    font-weight: 500;
 }
 
 .screen {
@@ -188,6 +191,7 @@ input[type="file"] {
     margin: 0 auto 30px;
     font-size: 18px;
     padding: 15px 40px;
+    font-weight: 600;
 }
 
 .action-buttons {
@@ -199,13 +203,15 @@ input[type="file"] {
 }
 
 .save-btn {
-    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+    background: linear-gradient(135deg, #43cea2, #185a9d);
+    font-weight: 600;
 }
 
 .play-btn {
-    background: linear-gradient(135deg, #a8b2ff, #667eea);
+    background: linear-gradient(135deg, #667eea, #764ba2);
     font-size: 20px;
     padding: 15px 40px;
+    font-weight: 600;
 }
 
 .image-list {
@@ -221,12 +227,12 @@ input[type="file"] {
 .image-item {
     background: rgba(40, 40, 70, 0.6);
     border-radius: 15px;
-    padding: 15px;
+    padding: 20px;
     text-align: center;
     transition: all 0.3s ease;
     border: 1px solid rgba(100, 100, 255, 0.2);
     backdrop-filter: blur(5px);
-    min-height: 200px;
+    min-height: 220px;
 }
 
 .image-item:hover {
@@ -292,12 +298,12 @@ input[type="file"] {
 }
 
 .modal-content {
-    background: linear-gradient(135deg, rgba(30, 30, 60, 0.9), rgba(20, 20, 40, 0.9));
+    background: linear-gradient(135deg, rgba(30, 30, 60, 0.95), rgba(20, 20, 40, 0.95));
     border-radius: 20px;
     padding: 40px;
-    max-width: 500px;
+    max-width: 600px;
     width: 90%;
-    max-height: 80vh;
+    max-height: 85vh;
     overflow-y: auto;
     border: 1px solid rgba(100, 100, 255, 0.3);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
@@ -338,9 +344,10 @@ input[type="file"] {
 
 .input-group label {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     color: #a8b2ff;
-    font-weight: 600;
+    font-weight: 500;
+    font-size: 16px;
 }
 
 .input-group input[type="file"] {
@@ -376,6 +383,7 @@ textarea::placeholder {
 
 .save-btn {
     background: linear-gradient(135deg, #43cea2, #185a9d);
+    font-weight: 600;
 }
 
 .quiz-header {
@@ -519,27 +527,36 @@ input[name="imageSource"][value="url"]:checked ~ .url-input {
 #global-settings {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
     margin: 20px 0;
-    padding: 15px;
+    padding: 20px;
     background: rgba(40, 40, 70, 0.6);
     border-radius: 15px;
     backdrop-filter: blur(5px);
+    justify-content: center;
 }
 
 #global-settings label {
     color: #a8b2ff;
-    font-weight: 600;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+#global-settings span {
+    color: #a8b2ff;
+    font-size: 16px;
 }
 
 #global-time-input {
     width: 80px;
-    padding: 8px 15px;
+    padding: 10px 15px;
     border: 1px solid rgba(100, 100, 255, 0.3);
     border-radius: 20px;
     background: rgba(40, 40, 70, 0.6);
     color: #e0e0ff;
     font-family: inherit;
+    font-size: 16px;
+    text-align: center;
 }
 
 .file-actions {
@@ -553,10 +570,11 @@ input[name="imageSource"][value="url"]:checked ~ .url-input {
     background: linear-gradient(135deg, #667eea, #764ba2);
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 12px 20px;
     border-radius: 30px;
     cursor: pointer;
     font-size: 14px;
+    font-weight: 500;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
 }
@@ -569,6 +587,124 @@ input[name="imageSource"][value="url"]:checked ~ .url-input {
 /* Hide modal URL/tierlist sections */
 #modal-url-input {
     display: none;
+}
+
+.quiz-type-select {
+    width: 100%;
+    padding: 12px 20px;
+    border: 1px solid rgba(100, 100, 255, 0.3);
+    border-radius: 30px;
+    background: rgba(40, 40, 70, 0.6);
+    color: #e0e0ff;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.quiz-type-badge {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+.question-preview {
+    font-style: italic;
+    color: #a8b2ff;
+    margin-bottom: 8px;
+    font-size: 13px;
+}
+
+.answers-preview {
+    color: #e0e0ff;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.multiple-choice-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.choice-btn {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    padding: 20px;
+    border-radius: 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    word-break: break-word;
+}
+
+.choice-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+}
+
+.choice-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.choice-btn.correct {
+    background: linear-gradient(135deg, #43cea2, #185a9d);
+}
+
+.choice-btn.incorrect {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+}
+
+.true-false-options {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.true-btn, .false-btn {
+    flex: 1;
+    max-width: 200px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.true-btn {
+    border-color: rgba(76, 175, 80, 0.5);
+}
+
+.false-btn {
+    border-color: rgba(244, 67, 54, 0.5);
+}
+
+.true-btn:hover {
+    background: rgba(76, 175, 80, 0.3);
+}
+
+.false-btn:hover {
+    background: rgba(244, 67, 54, 0.3);
+}
+
+.question-image {
+    max-width: 300px;
+    max-height: 200px;
+    border-radius: 10px;
+    margin: 10px auto;
+    display: block;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Responsive fixes */
@@ -595,4 +731,172 @@ input[name="imageSource"][value="url"]:checked ~ .url-input {
         padding: 20px;
         max-height: 85vh;
     }
+    
+    .choice-btn {
+        padding: 12px 15px;
+        font-size: 14px;
+    }
+    
+    .true-false-options {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .true-btn, .false-btn {
+        max-width: 100%;
+    }
+    
+    .choice-btn-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.options-section {
+    margin-bottom: 25px;
+}
+
+#options-container {
+    margin-bottom: 15px;
+}
+
+.option-field {
+    background: rgba(40, 40, 70, 0.4);
+    border: 1px solid rgba(100, 100, 255, 0.2);
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.option-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.option-text {
+    flex: 1;
+    min-width: 200px;
+    padding: 10px 15px;
+    border: 1px solid rgba(100, 100, 255, 0.3);
+    border-radius: 20px;
+    background: rgba(40, 40, 70, 0.6);
+    color: #e0e0ff;
+    font-family: inherit;
+}
+
+.option-correct {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #a8b2ff;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.remove-option-btn {
+    background: linear-gradient(135deg, #ef5350, #d32f2f);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.remove-option-btn:hover {
+    transform: scale(1.1);
+}
+
+.option-image-section {
+    border-top: 1px solid rgba(100, 100, 255, 0.2);
+    padding-top: 15px;
+}
+
+.option-image-controls {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.option-image-controls label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    padding: 5px 10px;
+    background: rgba(40, 40, 70, 0.6);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+.option-image-controls label:hover {
+    background: rgba(60, 60, 100, 0.8);
+}
+
+.option-image-url {
+    width: 100%;
+    padding: 8px 15px;
+    border: 1px solid rgba(100, 100, 255, 0.3);
+    border-radius: 20px;
+    background: rgba(40, 40, 70, 0.6);
+    color: #e0e0ff;
+    font-family: inherit;
+    margin-top: 10px;
+}
+
+.option-upload-btn {
+    padding: 8px 15px;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.add-option-btn {
+    background: linear-gradient(135deg, #43cea2, #185a9d);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(67, 206, 162, 0.3);
+}
+
+.add-option-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(67, 206, 162, 0.5);
+}
+
+.choice-btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: left;
+    padding: 15px 20px;
+}
+
+.choice-btn img {
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.choice-btn span {
+    flex: 1;
+}
+
+.choice-btn-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 500px;
+    margin: 0 auto;
 }

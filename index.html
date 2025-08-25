@@ -2,36 +2,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Memory Quiz Game</title>
+    <title>FQz - Quiz Creator</title>
     <link rel="stylesheet" href="styles.css">
+    <script type="importmap">
+    {
+        "imports": {
+            "./js/": "./js/"
+        }
+    }
+    </script>
 </head>
 <body>
     <div class="stars"></div>
     <div class="container">
-        <h1>Memory Quiz Game</h1>
+        <h1>FQz</h1>
         
         <div id="setup-screen" class="screen">
             <div class="setup-header">
-                <h2>Memory Collection</h2>
+                <h2>Quiz Collection</h2>
                 <div class="file-actions">
-                    <button id="import-btn" class="btn">Import .fqz</button>
+                    <button id="import-btn" class="btn">Import</button>
                     <input type="file" id="import-file" accept=".fqz" style="display: none;">
-                    <button id="import-tierlist-btn" class="btn">Import .btier</button>
+                    <button id="import-tierlist-btn" class="btn">Import Tierlist</button>
                     <input type="file" id="tierlist-file-input" accept=".btier" style="display: none;">
                 </div>
             </div>
             
-            <button id="add-new-btn" class="btn add-btn">Add New Item</button>
+            <button id="add-new-btn" class="btn add-btn">Add New Question</button>
             
             <div id="global-settings">
-                <label>Time per item (seconds):</label>
-                <input type="number" id="global-time-input" min="1" max="300" value="10" placeholder="Enter seconds...">
+                <label>Time per question:</label>
+                <input type="number" id="global-time-input" min="1" max="300" value="10">
+                <span>seconds</span>
             </div>
 
             <div id="image-list" class="image-list"></div>
             
             <div class="action-buttons">
-                <button id="save-btn" class="btn save-btn">Save as .fqz</button>
+                <button id="save-btn" class="btn save-btn">Export Quiz</button>
                 <button id="play-btn" class="btn play-btn">Start Quiz</button>
             </div>
         </div>
@@ -45,9 +53,7 @@
             </div>
             
             <div class="quiz-content">
-                <img id="quiz-image" alt="Quiz image">
-                <h3>What is this name?</h3>
-                <input type="text" id="answer-input" placeholder="Type your answer..." autocomplete="off">
+                <!-- Quiz content dynamically inserted here -->
                 <div class="timer">
                     <div class="timer-bar"></div>
                     <span id="timer-text">10</span>
@@ -65,32 +71,67 @@
         </div>
     </div>
 
-    <!-- Modal for adding/editing items -->
+    <!-- Modal for adding/editing questions -->
     <div id="modal" class="modal hidden">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2 id="modal-title">Add New Item</h2>
+            <h2 id="modal-title">Add New Question</h2>
             <div class="modal-body">
                 <div class="input-group">
-                    <label>Select Image Source:</label>
+                    <label>Quiz Type:</label>
+                    <select id="quiz-type-select" class="quiz-type-select">
+                        <option value="multiple-choice">Multiple Choice</option>
+                        <option value="guess-image">Guess the Image</option>
+                        <option value="text-question">Text Question</option>
+                        <option value="true-false">True/False</option>
+                        <option value="fill-blank">Fill in the Blank</option>
+                    </select>
+                </div>
+
+                <div class="input-group image-section">
+                    <label>Question Image (optional):</label>
                     <div class="image-source-options">
                         <label>
-                            <input type="radio" name="imageSource" value="file" checked>
-                            Upload PNG file
+                            <input type="radio" name="questionImageSource" value="none" checked>
+                            No image
                         </label>
                         <label>
-                            <input type="radio" name="imageSource" value="url">
-                            Image URL 
+                            <input type="radio" name="questionImageSource" value="file">
+                            Upload file
+                        </label>
+                        <label>
+                            <input type="radio" name="questionImageSource" value="url">
+                            Image URL
                         </label>
                     </div>
-                    <input type="file" id="modal-image-input" accept="image/*" style="display: none;">
-                    <input type="url" id="modal-url-input" placeholder="Enter image URL" class="url-input">
-                    <label for="modal-image-input" class="upload-btn">Choose PNG</label>
+                    <input type="file" id="modal-question-image-input" accept="image/*" style="display: none;">
+                    <input type="url" id="modal-question-url-input" placeholder="Enter image URL" class="url-input" style="display: none;">
+                    <label for="modal-question-image-input" class="upload-btn">Choose Image</label>
                 </div>
+
+                <div class="input-group question-section">
+                    <label>Question:</label>
+                    <textarea id="modal-question-input" placeholder="Enter your question here..." rows="3"></textarea>
+                </div>
+
                 <div class="input-group">
-                    <label>Names (one per line):</label>
-                    <textarea id="modal-names-input" placeholder="Enter names, one per line"></textarea>
+                    <label>Correct Answer(s):</label>
+                    <textarea id="modal-names-input" placeholder="Enter correct answer(s), one per line"></textarea>
                 </div>
+
+                <div class="input-group options-section">
+                    <label>Options:</label>
+                    <div id="options-container"></div>
+                    <button type="button" id="add-option-btn" class="btn add-option-btn">+ Add Option</button>
+                </div>
+
+                <div class="input-group">
+                    <label>
+                        <input type="checkbox" id="shuffle-options" checked>
+                        Randomize option order
+                    </label>
+                </div>
+
                 <div class="modal-actions">
                     <button id="modal-cancel" class="btn cancel-btn">Cancel</button>
                     <button id="modal-save" class="btn save-btn">Save</button>
@@ -99,6 +140,6 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script type="module" defer src="script.js"></script>
 </body>
 </html>
