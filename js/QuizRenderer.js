@@ -34,8 +34,18 @@ export class QuizRenderer {
             div.innerHTML = `
                 ${item.src ? `<img src="${item.src}" alt="Question">` : ''}
                 <div class="quiz-type-badge">${quizTypeLabel[item.quizType] || '📝'}</div>
-                ${item.question ? `<p class="question-preview">${item.question.length > 60 ? item.question.substring(0, 60) + '...' : item.question}</p>` : ''}
-                <p class="answers-preview">Answers: ${item.names.length > 2 ? item.names.slice(0, 2).join(', ') + '...' : item.names.join(', ')}</p>
+                <div class="question-spoiler" onclick="this.classList.toggle('revealed')">
+                    ${item.question ? `<p class="question-preview">${item.question.length > 60 ? item.question.substring(0, 60) + '...' : item.question}</p>` : '<p class="question-preview">No question text</p>'}
+                    <div class="spoiler-overlay">
+                        <span>Click to reveal</span>
+                    </div>
+                </div>
+                <div class="answers-spoiler" onclick="this.classList.toggle('revealed')">
+                    <p class="answers-preview">Answers: ${(item.names && item.names.length > 0) ? (item.names.length > 2 ? item.names.slice(0, 2).join(', ') + '...' : item.names.join(', ')) : 'No answers'}</p>
+                    <div class="spoiler-overlay">
+                        <span>Click to reveal</span>
+                    </div>
+                </div>
                 <div class="image-actions">
                     <button class="edit-btn" onclick="game.openModal(${index})">Edit</button>
                     <button class="delete-btn" onclick="game.deleteItem(${index})">Delete</button>

@@ -48,16 +48,16 @@ export class DataManager {
                     // Original format
                     this.game.images = data.images.map(img => ({
                         src: img.src,
-                        names: img.names,
+                        names: img.names || [],
                         quizType: img.quizType || 'guess-image',
                         question: img.question || '',
-                        questionImage: img.questionImage,
+                        questionImage: img.questionImage || null,
                         allOptions: img.allOptions || [],
                         shuffleOptions: img.shuffleOptions !== false,
                         wrongOptions: img.wrongOptions || [],
-                        id: Date.now() + Math.random()
+                        id: img.id || Date.now() + Math.random()
                     }));
-                    this.game.renderImageList();
+                    this.game.renderer.renderImageList();
                     alert('Data imported successfully!');
                 } else {
                     alert('Invalid file format');
